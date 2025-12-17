@@ -1,0 +1,8 @@
+[package]
+name = "linux-small"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+const_format = "0.2.35"
+pathbuf = "1.0.0"
