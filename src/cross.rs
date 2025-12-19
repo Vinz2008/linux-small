@@ -3,6 +3,7 @@ use pathbuf::pathbuf;
 use const_format::formatcp;
 use crate::{TEMP_PATH, utils::{download, extract_tar}};
 
+//const CROSS_TYPE : &'static str = "i486-linux-musl-cross";
 const CROSS_FOLDER : &'static str =  formatcp!("{}/i486-linux-musl-cross", TEMP_PATH);
 const CROSS_URL : &'static str = "https://musl.cc/i486-linux-musl-cross.tgz";
 

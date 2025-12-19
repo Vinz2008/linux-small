@@ -9,6 +9,8 @@ mod cross;
 mod linux;
 mod busybox;
 
+// TODO : add cache invalidation (ex if cross changes recompile everything else)
+
 fn main() {
     let start = Instant::now();
     let temp_path =  Path::new(TEMP_PATH);
