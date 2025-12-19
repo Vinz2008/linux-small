@@ -1,7 +1,7 @@
 use std::{fs, path::Path, process::Command, thread};
 use const_format::formatcp;
 use pathbuf::pathbuf;
-use crate::{utils::{download, extract_tar}, consts::{CONFIGS_PATH, TEMP_PATH}};
+use crate::{utils::{download, extract_tar}, consts::{CONFIGS_PATH, TEMP_PATH, FILESYSTEM_PATH}};
 
 const BUSYBOX_VERSION : &'static str = "1_36_1";
 const BUSYBOX_TAR_NAME : &'static str = formatcp!("{}.tar.gz", BUSYBOX_VERSION);
