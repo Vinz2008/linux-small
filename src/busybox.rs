@@ -10,8 +10,6 @@ const BUSYBOX_FOLDER_NAME : &'static str = formatcp!("busybox-{}", BUSYBOX_VERSI
 const BUSYBOX_PATH : &'static str = formatcp!("{}/{}", TEMP_PATH, BUSYBOX_FOLDER_NAME);
 const BUSYBOX_CONFIG_PATH_START : &'static str = formatcp!("{}/busybox/.config", CONFIGS_PATH);
 
-const FILESYSTEM_PATH : &'static str = formatcp!("{}/filesystem", TEMP_PATH);
-
 
 pub fn compile_busybox(){
     let filesystem_path = Path::new(FILESYSTEM_PATH);

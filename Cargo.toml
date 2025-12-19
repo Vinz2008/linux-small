@@ -6,3 +6,10 @@ edition = "2024"
 [dependencies]
 const_format = "0.2.35"
 pathbuf = "1.0.0"
+
+[profile.release]
+opt-level = "s"
+codegen-units = 1
+lto = "fat"
+panic = "abort"
+strip = "symbols"
