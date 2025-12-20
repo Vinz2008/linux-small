@@ -1,6 +1,6 @@
 use std::{fs, path::Path, time::Instant};
 
-use crate::{busybox::compile_busybox, consts::TEMP_PATH, cross::get_cross, linux::compile_linux};
+use crate::{busybox::compile_busybox, consts::TEMP_PATH, cross::get_cross, filesystem::init_filesystem, img::generate_img, linux::compile_linux};
 
 mod consts;
 mod git;
@@ -22,5 +22,7 @@ fn main() {
     get_cross();
     compile_linux();
     compile_busybox();
+    init_filesystem();
+    generate_img();
     println!("Took {}s", start.elapsed().as_secs());
 }

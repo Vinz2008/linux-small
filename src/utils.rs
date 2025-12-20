@@ -22,3 +22,23 @@ pub fn extract_tar(path : &Path){
     
     cmd.spawn().unwrap().wait().expect("failed to extract tar");
 }
+
+
+#[cfg(unix)]
+pub fn chmod_x<P>(path: P) -> std::io::Result<()>
+where P: AsRef<Path>
+{
+    use std::fs;
+    use std::os::unix::fs::PermissionsExt;
+
+    let mut perms = fs::metadata(&path)?.permissions();
+    perms.set_mode(perms.mode() | 0o111);
+    fs::set_permissions(path, perms)
+}
+
+#[cfg(not(unix))]
+pub fn chmod_x<P>(_path: P) -> std::io::Result<()> 
+where P: AsRef<Path>
+{
+    Ok(())
+}

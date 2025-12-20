@@ -1,8 +1,8 @@
-use std::{env, fs, process::Command};
+use std::{env, fs, io::Write, process::Command};
 
 use pathbuf::pathbuf;
 
-use crate::consts::FILESYSTEM_PATH;
+use crate::{consts::FILESYSTEM_PATH, utils::chmod_x};
 
 // TODO : create a folder structure in a folder and just copy it ?
 
@@ -83,6 +83,17 @@ pub fn init_filesystem(){
         let folder_path = pathbuf![FILESYSTEM_PATH, folder];
         if !folder_path.exists(){
             fs::create_dir_all(folder_path).unwrap();
+        }
+    }
+
+    for file in CREATE_FILES {
+        let file_path = pathbuf![FILESYSTEM_PATH, file.path];
+        if !file_path.exists(){
+            let mut f = fs::File::create(&file_path).unwrap();
+            write!(f, "{}", file.content).unwrap();
+            if file.is_exe {
+                chmod_x(file_path).unwrap();
+            }
         }
     }
 

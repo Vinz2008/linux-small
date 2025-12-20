@@ -1,5 +1,5 @@
 use std::{fs, path::Path, process::Command, thread};
-use const_format::formatcp;
+use const_format::{concatcp, formatcp};
 use pathbuf::pathbuf;
 use crate::{utils::{download, extract_tar}, consts::{CONFIGS_PATH, TEMP_PATH, FILESYSTEM_PATH}};
 
@@ -7,7 +7,7 @@ const BUSYBOX_VERSION : &'static str = "1_36_1";
 const BUSYBOX_TAR_NAME : &'static str = formatcp!("{}.tar.gz", BUSYBOX_VERSION);
 const BUSYBOX_URL : &'static str = formatcp!("https://github.com/mirror/busybox/archive/refs/tags/{}", BUSYBOX_TAR_NAME);
 const BUSYBOX_FOLDER_NAME : &'static str = formatcp!("busybox-{}", BUSYBOX_VERSION);
-const BUSYBOX_PATH : &'static str = formatcp!("{}/{}", TEMP_PATH, BUSYBOX_FOLDER_NAME);
+const BUSYBOX_PATH : &'static str = concatcp!(TEMP_PATH, "/", BUSYBOX_FOLDER_NAME);
 const BUSYBOX_CONFIG_PATH_START : &'static str = formatcp!("{}/busybox/.config", CONFIGS_PATH);
 
 
